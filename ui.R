@@ -51,7 +51,12 @@ shinyUI(fluidPage(
       # Second section
       h3("Instructions"),
       p("The user chooses the number of points (n) and the mean and standard deviation of the noise (distributed normally):"),
-      withMathJax("$$ \\varepsilon_i  = \\mathcal{N}(\\mu, \\sigma) \\qquad \\text{for}~i = 1,\\dots,n$$")
+      withMathJax("$$ \\varepsilon_i  = \\mathcal{N}(\\mu, \\sigma) \\qquad \\text{for}~i = 1,\\dots,n$$"),
+      # Third section
+      h3("Results of the linear model"),
+      textOutput("text"),
+      p("A simple measure of the quality of the fit is the R-squared value, which is shown in the plot title. The closer it is to 1, the better you will be able to predict the signal (and vice-versa for 0). The astute user will notice that changing the mean of the noise just shifts the data in the y-direction."),
+      plotOutput("distPlot")
     )
   )
 ))

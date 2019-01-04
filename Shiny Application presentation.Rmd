@@ -1,0 +1,40 @@
+---
+title: "Shiny Application"
+author: "Solomon"
+date: "January 4, 2019"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Overview
+
+This is the Shiny code for the Data Products Coursera course taught by John Hopkins University.
+
+
+## Synopsis
+This is the user-interface definition of a Shiny web application that illustrates the effect of noise on a signal.
+
+## Slide with R Output
+
+```{r cars, echo = TRUE}
+summary(cars)
+```
+
+## Procedure
+The objective is to fit the following expression with a linear model:
+yi=xi+??ifor i=1,.,n
+where ??i=N(??,??) for i=1,.,n.
+
+We provide the user with three sliders:
+
+the number of points n (our measurements);
+the mean of the Gaussian random noise, ??;
+the standard deviation of the Gaussian random noise, ??.
+The linear model is illustrated via a plot and the R2 value is provided as a measure of the quality of the fit.
+ 
+## Github 
+
+https://github.com/SolomonGeddam/ShinyApplication

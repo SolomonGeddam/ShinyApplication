@@ -1,0 +1,10 @@
+name: Publish Document
+title:
+username:
+account: rpubs
+server: rpubs.com
+hostUrl: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/455835/074e22c75b834121a72203ac9cd4cb7b
+bundleId: https://api.rpubs.com/api/v1/document/455835/074e22c75b834121a72203ac9cd4cb7b
+url: http://rpubs.com/Solomon/455835
+when: 1546833631.84689

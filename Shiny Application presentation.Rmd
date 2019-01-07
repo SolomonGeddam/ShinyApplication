@@ -29,7 +29,36 @@ the number of points n (our measurements);
 the mean of the Gaussian random noise, ??;
 the standard deviation of the Gaussian random noise, ??.
 The linear model is illustrated via a plot and the R2 value is provided as a measure of the quality of the fit.
- 
+
+##ui.R
+
+      h3("Objective"),
+      p("This is an instructional app which illustrates the effect of noise on a linear model."),
+      p("We are using a linear model of noisy measurements to fit the signal:"),
+      withMathJax("$$y_i=x_i + \\varepsilon_i \\qquad \\text{for}~i = 1,\\dots,n$$."),
+      
+      # Second section
+      h3("Instructions"),
+      p("The user chooses the number of points (n) and the mean and standard deviation of the noise (distributed normally):"),
+      withMathJax("$$ \\varepsilon_i  = \\mathcal{N}(\\mu, \\sigma) \\qquad \\text{for}~i = 1,\\dots,n$$"),
+      # Third section
+      h3("Results of the linear model"),
+      textOutput("text"),
+      p("A simple measure of the quality of the fit is the R-squared value, which is shown in the plot title. The closer it is to 1, the better you will be able to predict the signal (and vice-versa for 0). The astute user will notice that changing the mean of the noise just shifts the data in the y-direction."),
+      plotOutput("distPlot")
+      
+      
+
+## Server.R
+
+    p <- ggplot(df, aes(x,y)) +
+      geom_point() +
+      geom_smooth(method = "lm", se = FALSE)+
+      ggtitle(paste("Fit data with linear model, R-squared=", format(rsquared,digits=2))) +
+      theme(plot.title = element_text(size=22))
+    p
+    
+    
 ## Github 
 
 https://github.com/SolomonGeddam/ShinyApplication

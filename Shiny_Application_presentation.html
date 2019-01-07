@@ -109,18 +109,6 @@
 
 <p>This is the user-interface definition of a Shiny web application that illustrates the effect of noise on a signal.</p>
 
-</article></slide><slide class=""><hgroup><h2>Slide with R Output</h2></hgroup><article  id="slide-with-r-output">
-
-<pre class = 'prettyprint lang-r'>summary(cars)</pre>
-
-<pre >##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00</pre>
-
 </article></slide><slide class=""><hgroup><h2>Procedure</h2></hgroup><article  id="procedure">
 
 <p>The objective is to fit the following expression with a linear model: yi=xi+??ifor i=1,.,n where ??i=N(??,??) for i=1,.,n.</p>
@@ -128,6 +116,34 @@
 <p>We provide the user with three sliders:</p>
 
 <p>the number of points n (our measurements); the mean of the Gaussian random noise, ??; the standard deviation of the Gaussian random noise, ??. The linear model is illustrated via a plot and the R2 value is provided as a measure of the quality of the fit.</p>
+
+</article></slide><slide class=""><hgroup><h2>ui.R</h2></hgroup><article  id="ui.r">
+
+<pre >  h3(&quot;Objective&quot;),
+  p(&quot;This is an instructional app which illustrates the effect of noise on a linear model.&quot;),
+  p(&quot;We are using a linear model of noisy measurements to fit the signal:&quot;),
+  withMathJax(&quot;$$y_i=x_i + \\varepsilon_i \\qquad \\text{for}~i = 1,\\dots,n$$.&quot;),
+  
+  # Second section
+  h3(&quot;Instructions&quot;),
+  p(&quot;The user chooses the number of points (n) and the mean and standard deviation of the noise (distributed normally):&quot;),
+  withMathJax(&quot;$$ \\varepsilon_i  = \\mathcal{N}(\\mu, \\sigma) \\qquad \\text{for}~i = 1,\\dots,n$$&quot;),
+  # Third section
+  h3(&quot;Results of the linear model&quot;),
+  textOutput(&quot;text&quot;),
+  p(&quot;A simple measure of the quality of the fit is the R-squared value, which is shown in the plot title. The closer it is to 1, the better you will be able to predict the signal (and vice-versa for 0). The astute user will notice that changing the mean of the noise just shifts the data in the y-direction.&quot;),
+  plotOutput(&quot;distPlot&quot;)
+  
+  </pre>
+
+</article></slide><slide class=""><hgroup><h2>Server.R</h2></hgroup><article  id="server.r">
+
+<pre >p &lt;- ggplot(df, aes(x,y)) +
+  geom_point() +
+  geom_smooth(method = &quot;lm&quot;, se = FALSE)+
+  ggtitle(paste(&quot;Fit data with linear model, R-squared=&quot;, format(rsquared,digits=2))) +
+  theme(plot.title = element_text(size=22))
+p</pre>
 
 </article></slide><slide class=""><hgroup><h2>Github</h2></hgroup><article  id="github">
 
